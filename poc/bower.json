@@ -1,0 +1,22 @@
+{
+  "name": "poc",
+  "authors": [
+    "Justin Go <jz10@jz10.info>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "peerjs": "~0.3.14"
+  }
+}
