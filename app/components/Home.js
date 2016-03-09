@@ -1,13 +1,19 @@
 var React = require('react');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
-var Webalon = require('../game-core/webalon');
 
 function Home() {
-    var webalonInstance = new Webalon();
-    webalonInstance.initialize();
-    console.log(webalonInstance.db().get());
-    return ( <h1> Webalon </h1>)
+    return ( 
+    <div>
+        <h1>Webalon</h1>
+        <h2>What's your role?</h2>
+        <Link to='/host'>
+            <button>Host</button>
+        </Link>
+        <button>Host & Player</button>
+        <button>Player</button>
+    </div>
+    )
 }
 
 module.exports = Home;

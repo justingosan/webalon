@@ -16,12 +16,17 @@ function Webalon() {
             playerChoiceVote: null,
             questVote: null
         }
-    }
+    };
 }
 
 Webalon.prototype.initialize = function() {
-    this.db = databaseHelper.initData(this.defaults);
+    this.boardDB = databaseHelper.initData(this.defaults, 'boardDB');
+    this.playerDB = databaseHelper.initData(this.defaults, 'playerDB');
     return this;
+};
+
+Webalon.prototype.getBoardStats = function(){
+    return this.boardDB().get()[0];
 };
 
 
