@@ -1,32 +1,46 @@
+var _ = require('lodash');
+var async = require('async');
+
 var databaseHelper = require('../utils/databaseHelper');
 
 function Webalon() {
-    this.defaults = {
+    this.boardDBDefaults = {
         options: {
             voteTimer: 60
         },
         boardStateDB: {
-            players: 0,
             completedQuests: 0,
             successfulQuests: 0,
             failedQuests: 0
-        },
-        playersStateDB: {
-            isTurn: false,
-            playerChoiceVote: null,
-            questVote: null
         }
     };
+
+    this.playerDBDefaults = {};
 }
 
-Webalon.prototype.initialize = function() {
-    this.boardDB = databaseHelper.initData(this.defaults, 'boardDB');
-    this.playerDB = databaseHelper.initData(this.defaults, 'playerDB');
+Webalon.prototype.initialize = function(callback) {
+    var self = this;
+    var jobs = [];
+
+    jobs.push(function(cb){
+        self.boardDB = databaseHelper.initData(self.boardDBDefaults, 'boardDB', cb);
+    });
+
+    jobs.push(function(result, cb){
+        self.playerDB = databaseHelper.initData(self.playerDBDefaults, 'playerDB', cb);
+    });
+
+    async.waterfall(jobs, callback);
+
     return this;
 };
 
-Webalon.prototype.getBoardStats = function(){
-    return this.boardDB().get()[0];
+Webalon.prototype.addPlayer = function(){
+
+};
+
+Webalon.prototype.getBoardStats = function(cb){
+    return this.boardDB.get('boardDB', cb);
 };
 
 

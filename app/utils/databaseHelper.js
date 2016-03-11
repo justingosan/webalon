@@ -1,11 +1,9 @@
-var Taffy = require('taffydb/taffy').taffy;
+var PouchDB = require('pouchdb');
 
 module.exports = {
-    initData: function(data, dbName){
-        var db = Taffy();
-        db.store(dbName)
-        db().remove();
-        db.insert(data);
+    initData: function(data, dbName, cb){
+        var db = new PouchDB('webalon');
+        db.put(data, dbName, cb);
         return db;
     }
 };

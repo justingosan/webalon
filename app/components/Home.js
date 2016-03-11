@@ -11,7 +11,9 @@ function Home() {
             <button>Host</button>
         </Link>
         <button>Host & Player</button>
-        <button>Player</button>
+        <Link to='/player'>
+            <button>Player</button>
+        </Link>
     </div>
     )
 }

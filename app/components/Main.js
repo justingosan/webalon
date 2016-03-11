@@ -1,8 +1,17 @@
 var React = require('react');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+
+var Webalon = require('../game-core/webalon');
+var WebalonPeer = require('../utils/p2pHelper');
+
 // require('../main.css');
 
 var Main = React.createClass({
+  getInitialState: function(){
+    window.webalonInstance = new Webalon();
+    window.webalonPeerInstance = new WebalonPeer(); 
+    return {}
+  },
   render: function () {
     return (
       <div className='main-container'>
