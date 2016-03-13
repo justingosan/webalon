@@ -9,19 +9,15 @@ var PlayerPrompt = React.createClass({
         }
     },
     componentDidMount: function(){
-        webalonPeerInstance.initializeP2P(null, function(){
+        webalonPeerInstance.initializeP2PPlayer(null, function(){
 
         });
     },
     connectToHost: function(){
-        window.hostConnection = webalonPeerInstance.peer.connect('webalon1');
-
-        hostConnection.on('open', function(){
-            hostConnection.send('test');
-        });        
-
-        hostConnection.on('error', function(error){
-            console.error('hostConnection error', error);
+        webalonPeerInstance.connectToPeer('webalon1', function(err, connection){
+            connection.on('open', function(){
+                connection.send('test');
+            });        
         });
     },
     render: function(){

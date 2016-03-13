@@ -19,7 +19,7 @@ var PlayerList = React.createClass({
         });
 
         jobs.push(function(cb){
-            webalonPeerInstance.initializeP2P('webalon1', cb);
+            webalonPeerInstance.initializeP2PHost('webalon1', cb);
         })
 
         jobs.push(function(cb){
